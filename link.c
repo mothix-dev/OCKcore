@@ -15,14 +15,15 @@ const char *options = "hv";
 int verbose_mode = 0;
 
 void help() {
-    fprintf(stderr, "Usage: link [-hv] [file1] [file2]\n");
+    fprintf(stderr, "Usage: link [-hv] file1 file2\n\n");
+    fprintf(stderr, "Create a hard link from file1 to file2.\n\n");
+    fprintf(stderr, "Options:\n"
+                    "\t-h\tdisplay this message\n"
+                    "\t-v\tactivate verbose mode\n");
     exit(1);
 }
 
 int main(int argc, char **argv) {
-    if(argc == 1)
-        help();
-
     int c = 0;
     while((c = getopt(argc, argv, options)) != -1) {
         switch(c) {
@@ -33,13 +34,21 @@ int main(int argc, char **argv) {
                 verbose_mode = 1;
                 break;
             default:
-                abort();
+                fprintf(stderr, "link: invalid option '-%c'\n", optopt);
+                help();
         }
     }
 
+    if(!argv[optind] || !argv[optind + 1]) {
+        fprintf(stderr, "link: missing operand\n");
+        help();
+    }
+
     int status = link(argv[optind], argv[optind + 1]);
-    if(status != 0)
+    if(status != 0) {
         fprintf(stderr, "link: could not create link: %s\n", strerror(errno));
+        return 1;
+    }
     else if(verbose_mode)
         fprintf(stderr, "%s -> %s\n", argv[optind], argv[optind + 1]);
 
