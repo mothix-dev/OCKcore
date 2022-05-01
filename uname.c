@@ -26,7 +26,7 @@ void help() {
 int main(int argc, char **argv) {
   struct utsname sysInfo;
   uname(&sysInfo);
-  int c;
+  int c = 0;
   int opt_a = 0;
   int opt_m = 0;
   int opt_n = 0;
