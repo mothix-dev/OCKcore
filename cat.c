@@ -27,8 +27,14 @@ void help() {
 }
 
 void error(const char *filename) {
-    fprintf(stderr, "cat: could not read file %s: %s\n",
+    fprintf(stderr, "cat: cannot read file %s: %s\n",
             filename, strerror(errno));
+}
+
+int read_stdin(int *buffer) {
+    
+
+    return 0;
 }
 
 int main(int argc, char **argv) {
@@ -50,12 +56,18 @@ int main(int argc, char **argv) {
     int buffer = 0;
     int fd = 0;
 
+    /* almost certainly no options */
+    if(optind == argc) {
+        while((read(STDIN_FILENO, &buffer, 1)) != 0)
+            write(STDOUT_FILENO, &buffer, 1);
+        return 0;
+    }
+
     for(; argv_ind != argc; argv_ind++) {
-        /* read stdin either explicitly or implicitly */
-        if(!argv[argv_ind] || (strcmp(argv[argv_ind], "-") == 0)) {
+        /* read stdin explicitly */
+        if((strcmp(argv[argv_ind], "-")) == 0) {
             while((read(STDIN_FILENO, &buffer, 1)) != 0)
                 write(STDOUT_FILENO, &buffer, 1);
-
             continue;
         }
         else {
