@@ -1,7 +1,8 @@
 /*
     OCKcore - POSIX "cat" utility
 
-    Copyright (c) 2022 Thomas Sirack
+    Copyright (c) 2022 Griffin
+    Distributed under the terms of the ISC Licence.
 */
 
 #include <errno.h>

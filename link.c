@@ -2,7 +2,8 @@
     OCKcore - POSIX "link" utility
     https://pubs.opengroup.org/onlinepubs/9699919799/utilities/link.html
 
-    Copyright (c) 2022 Thomas Sirack
+    Copyright (c) 2022 Griffin
+    Distributed under the terms of the ISC Licence.
 */
 
 #include <errno.h>

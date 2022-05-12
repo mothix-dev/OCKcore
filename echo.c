@@ -1,7 +1,9 @@
 /*
     OCKcore - POSIX "echo" utility
     https://pubs.opengroup.org/onlinepubs/009604599/utilities/echo.html
+
     Copyright (c) 2022 VeryCoolMoment
+    Distributed under the terms of the ISC Licence.
 */
 #include <stdio.h>
 #include <errno.h>
