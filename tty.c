@@ -3,6 +3,7 @@
     https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/tty.html
 
     Copyright (c) 2022 Europa
+    Distributed under the terms of the ISC Licence.
 */
 
 #include <stdio.h>
