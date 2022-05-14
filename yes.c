@@ -10,10 +10,11 @@
 int main(int argc, char **argv) {
     if(argc == 1)
         while(1)
-            printf("y\n");
+            puts("y");
     else
         while(1)
-            printf("%s\n", argv[1]);
+            puts(argv[1]);
 
+    fflush(stdout);
     return 0;
 }
