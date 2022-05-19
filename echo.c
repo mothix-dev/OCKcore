@@ -8,10 +8,6 @@
 #include <stdio.h>
 #include <errno.h>
 
-void error(char error[])
-{
-   printf("error: %s\n", error);
-}
 int main( int argc, char *argv[] )  {
 
    if( argc == 2 ) {
@@ -19,7 +15,16 @@ int main( int argc, char *argv[] )  {
       return 0;
    }
    else if( argc > 1 ) {
-      error("too many arguments given");
+      int counter;
+	    for(counter=1; counter<argc; counter++)
+            if(counter == 1)
+            {
+                printf("%s",argv[counter]);
+            }
+            else
+            {
+                printf("%s%s", " ",argv[counter]);
+            } 
    }
    else {
       printf("\n");
