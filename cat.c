@@ -32,12 +32,6 @@ void error(const char *filename) {
             filename, strerror(errno));
 }
 
-int read_stdin(int *buffer) {
-    
-
-    return 0;
-}
-
 int main(int argc, char **argv) {
     int c = 0;
     while((c = getopt(argc, argv, options)) != -1) {
