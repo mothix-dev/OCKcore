@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <dirent.h>
 #include <sys/errno.h>
 #include <unistd.h>
-#include <limits.h>
 
 const char options[] = "1ha";
 
