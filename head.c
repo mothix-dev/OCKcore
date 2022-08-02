@@ -19,10 +19,10 @@ static void usage() {
 }
 
 int main(int argc, char * argv[]) {
-    FILE* fp;
-    char* line = malloc(BUFFER_LENGTH);
+    FILE *fp;
+    char *line = malloc(BUFFER_LENGTH);
 
-    int c = 0;
+    int  c = 0;
     long line_max = 10;
 
     if (argc < 2)

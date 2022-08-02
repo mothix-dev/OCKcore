@@ -12,22 +12,30 @@
 #define BUFSIZE 8192
 
 int main(int argc, char **argv) {
-    char *buf   = malloc(BUFSIZE);
-    int bufused = 0;
+    char * buf     = malloc(BUFSIZE);
+    int    bufused = 0;
+    char * yes;
+    int    len;
 
-    if (argc <= 1) {
-        char yes[]  = {'y', '\n'};
-        while (bufused < BUFSIZE) {
-            memcpy(buf+bufused, yes, sizeof(yes));
-            bufused += sizeof(yes);
-        }
-        while(write(1, buf, BUFSIZE));
+    if (argc == 1) {
+        len = sizeof "y\n";
+        yes = malloc(sizeof "y\n");
+        strcpy(yes, "y\n");
     }
 
     else if (argc <= 2) {
-        while (1)
-            puts(argv[1]);
+        len = sizeof argv[1] + 2;
+        yes = malloc(len);
+        strcpy(yes, argv[1]);
+        strcat(yes, "\n");
     }
+
+    while (bufused < BUFSIZE) {
+        memcpy(buf+bufused, yes, len);
+        bufused += len;
+    }
+
+    while(write(1, buf, BUFSIZE));
 
     return 0;
 }

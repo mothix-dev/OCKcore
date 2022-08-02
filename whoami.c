@@ -14,7 +14,7 @@ int main() {
 	register struct passwd *pw;
   register uid_t uid;
 	uid = geteuid ();
-  pw = getpwuid (uid);
+  pw  = getpwuid (uid);
   if (pw)
     {
       printf("%s", pw->pw_name);
