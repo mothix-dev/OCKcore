@@ -1,7 +1,7 @@
 /*
     OCKcore - "yes" utility
 
-    Copyright (c) 2022 Griffin
+    Copyright (c) 2022 Griffin, Lilly Cham
     Distributed under the terms of the ISC Licence.
 */
 
