@@ -2,11 +2,24 @@ CFLAGS :=-Wshadow -Wall -Wextra -Wpedantic -Wstrict-overflow -Wfatal-errors -std
 BUILD_DIR := build
 SRCS := src/main.c
 
-all: textutils fileutils shutils
+all: | prin textutils fileutils shutils
+	@echo "Done!"
+	
+prin: 
+	@echo "Building everything. This might take a while..."
 
-textutils: cat head
-shutils: yes false tty whoami uname echo pwd
-fileutils: link
+printxt:
+	@echo "Building the text utilities..."
+
+prinsh:
+	@echo "Building the shell utilities..."
+
+prinfile:
+	@echo "Building the file utilities..."
+
+textutils: | printxt cat head
+shutils:   | prinsh yes false tty whoami uname echo pwd
+fileutils: |prinfile link sync
 
 cat: |$(BUILD_DIR)
 	$(CC) -o $(BUILD_DIR)/cat cat.c $(CFLAGS)
@@ -22,6 +35,9 @@ head: |$(BUILD_DIR)
 
 link: |$(BUILD_DIR)
 	$(CC) -o $(BUILD_DIR)/link link.c $(CFLAGS)
+
+sync: |$(BUILD_DIR)
+	$(CC) -o $(BUILD_DIR)/sync sync.c $(CFLAGS)
 
 true: |$(BUILD_DIR)
 	$(CC) -o $(BUILD_DIR)/true true.c $(CFLAGS)
@@ -44,3 +60,7 @@ yes: |$(BUILD_DIR)
 $(BUILD_DIR):
 	@echo "Folder $(BUILD_DIR) does not exist, creating it..."
 	mkdir -p $@
+
+clean:
+	@echo "Cleaning up..."
+	@rm -rf bin/*
