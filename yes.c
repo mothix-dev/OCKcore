@@ -36,6 +36,5 @@ int main(int argc, char **argv) {
     }
 
     while(write(1, buf, BUFSIZE));
-
     return 0;
 }

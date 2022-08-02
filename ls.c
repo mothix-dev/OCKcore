@@ -1,3 +1,10 @@
+/*
+    OCKcore - "ls" utility
+
+    Copyright (c) 2022 Lilly Cham
+    Distributed under the terms of the ISC Licence.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
