@@ -12,8 +12,9 @@
 #define BUFFER_LENGTH 4096
 
 static void usage() {
-	fprintf(stderr, "usage: head <file> [lines]\n");
-    fprintf(stderr, "to read from stdin, use <file> arg -\n");
+	fprintf(stderr, "Usage:\thead <file|\"-\"> [lines]\n");
+    fprintf(stderr, "\tif file is passed as -, head will read from stdin.\n");
+    fprintf(stderr, "\tlines will default to 10 if no argument is given.\n");
 	exit(-1);
 }
 

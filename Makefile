@@ -4,7 +4,7 @@ SRCS := src/main.c
 
 all: textutils fileutils shutils
 
-textutils: cat
+textutils: cat head
 shutils: yes false tty whoami uname echo pwd
 fileutils: link
 
