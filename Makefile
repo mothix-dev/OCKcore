@@ -17,6 +17,9 @@ echo: |$(BUILD_DIR)
 false: |$(BUILD_DIR)
 	$(CC) -o $(BUILD_DIR)/false false.c $(CFLAGS)
 
+head: |$(BUILD_DIR)
+	$(CC) -o $(BUILD_DIR)/head head.c $(CFLAGS)
+
 link: |$(BUILD_DIR)
 	$(CC) -o $(BUILD_DIR)/link link.c $(CFLAGS)
 
