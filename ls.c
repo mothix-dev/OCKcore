@@ -16,7 +16,7 @@ static int usage() {
 void ls_(const char *dir, int show_all, int newlines) {
     struct dirent *d;
 	DIR *dh = opendir(dir);
-
+    
     if (!dh) {
 		if (errno == ENOENT) {
 			perror("Directory doesn't exist");
@@ -32,8 +32,7 @@ void ls_(const char *dir, int show_all, int newlines) {
 			continue;
 		printf("%s  ", d->d_name);
 		if(newlines) printf("\n");
-	}
-
+    }
 }
 
 int main(int argc, char *argv[]) {
