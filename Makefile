@@ -18,8 +18,8 @@ prinfile:
 	@echo "Building the file utilities..."
 
 textutils: | printxt cat head
-shutils:   | prinsh yes false tty whoami uname echo pwd
-fileutils: |prinfile link sync
+shutils:   | prinsh yes false tty whoami uname echo pwd ls
+fileutils: | prinfile link sync
 
 cat: |$(BUILD_DIR)
 	$(CC) -o $(BUILD_DIR)/cat cat.c $(CFLAGS)
@@ -35,6 +35,9 @@ head: |$(BUILD_DIR)
 
 link: |$(BUILD_DIR)
 	$(CC) -o $(BUILD_DIR)/link link.c $(CFLAGS)
+
+ls: |$(BUILD_DIR)
+	$(CC) -o $(BUILD_DIR)/ls ls.c $(CFLAGS)
 
 sync: |$(BUILD_DIR)
 	$(CC) -o $(BUILD_DIR)/sync sync.c $(CFLAGS)
