@@ -25,4 +25,8 @@ path = "src/pwd.rs"
 name = "head"
 path = "src/head.rs"
 
+[[bin]]
+name = "ls"
+path = "src/ls.rs"
+
 [dependencies]
