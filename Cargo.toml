@@ -17,4 +17,12 @@ path = "src/yes.rs"
 name = "echo"
 path = "src/echo.rs"
 
+[[bin]]
+name = "pwd"
+path = "src/pwd.rs"
+
+[[bin]]
+name = "head"
+path = "src/head.rs"
+
 [dependencies]
