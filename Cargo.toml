@@ -1,0 +1,20 @@
+[package]
+name = "ockcore"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "cat"
+path = "src/cat.rs"
+
+[[bin]]
+name = "yes"
+path = "src/yes.rs"
+
+[[bin]]
+name = "echo"
+path = "src/echo.rs"
+
+[dependencies]

@@ -55,3 +55,6 @@ dkms.conf
 
 # config files
 acme.dump
+
+# cargo target directory
+target/
