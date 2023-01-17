@@ -1,5 +1,5 @@
 use std::{process::exit, env};
-
+use ockcore::get_opts;
 fn help() -> ! {
     eprintln!("Usage: pwd [-LPh]");
     eprintln!("Print working directory.");
@@ -15,16 +15,9 @@ fn main() -> Result<(),std::io::Error> {
     let args: Vec<String> = env::args().collect();
     let args = args.split_at(1).1;
     let path = env::current_dir()?;
-    let mut absolute = false;
-    for arg in args {
-        match arg.as_str() {
-            "-h" => {help();}
-            "-L" => {absolute = false;}
-            "-P" => {absolute = true;}
-            _ => {}
-        };
-    }
-    if absolute {
+    let opts = get_opts(args, "LPh");
+    if opts.as_ref().unwrap_or_else(||help()).0.contains('h') {help();}
+    if opts.unwrap().0.ends_with('P') {
         println!("{}",path.canonicalize()?.display());
     } else {
         println!("{}",path.display());

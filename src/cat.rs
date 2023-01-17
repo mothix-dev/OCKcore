@@ -1,5 +1,5 @@
 use std::{env, io::{stdin, Read}, process::exit, fs::{File}};
-
+use ockcore::get_opts;
 fn help() -> ! {
     eprintln!("Usage: cat [-hu] [file] ...");
     eprintln!("Prints files to standard output.");
@@ -13,26 +13,22 @@ fn help() -> ! {
 fn main() -> Result<(),std::io::Error> {
     let args: Vec<String> = env::args().collect();
     let args = args.split_at(1).1;
-    let mut options = true;
-    for arg in args {
-        match arg.as_str() {
-            "-h" if options => {help();}
-            "-u" if options => {}
-            "--" if options => {
-                options = false;
-            }
-            "-" => {
-                options = false;
-                cat(stdin())?;
-            }
-            _ => {
-                options = false;
-                cat(File::open(arg)?)?;
-            }
-        };
-    }
-    if options {
+    let opts = get_opts(args, "hu");
+    if opts.as_ref().unwrap_or_else(||help()).0.contains('h') {help();}
+    let args = opts.unwrap().1;
+    if args.is_empty() {
         cat(stdin())?;
+    } else {
+        for arg in args {
+            match arg.as_str() {
+                "-" => {
+                    cat(stdin())?;
+                }
+                _ => {
+                    cat(File::open(arg)?)?;
+                }
+            };
+        }
     }
     Ok(())
 }
