@@ -29,4 +29,17 @@ path = "src/head.rs"
 name = "ls"
 path = "src/ls.rs"
 
+[[bin]]
+name = "true"
+path = "src/true.rs"
+
+[[bin]]
+name = "false"
+path = "src/false.rs"
+
+[[bin]]
+name = "sync"
+path = "src/sync.rs"
+
 [dependencies]
+libc = "0.2"
