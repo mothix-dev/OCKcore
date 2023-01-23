@@ -65,8 +65,12 @@ fn ls_file(pb: &Path, one_per_line: bool, show_hidden: bool, long_form: bool) {
                 if let Some(u) = get_group_by_gid(meta.gid()) {
                     groupname = u.name().to_str().unwrap().to_string();
                 }
-                println!("{} {} {username} {groupname} {} {} {name}", mode_string(meta.mode()), meta.nlink(), meta.size(), Utc.timestamp_opt(meta.mtime(),0).unwrap().format("%b %d %H:%M"));
-                
+                print!("{} {} {username} {groupname} {} {} {name}", mode_string(meta.mode()), meta.nlink(), meta.size(), Utc.timestamp_opt(meta.mtime(),0).unwrap().format("%b %d %H:%M"));
+                if pb.is_symlink() {
+                    println!(" -> {}", pb.read_link().unwrap().display());
+                } else {
+                    println!();
+                }
             } else {
                 println!("{name}");
             }
