@@ -43,3 +43,5 @@ path = "src/sync.rs"
 
 [dependencies]
 libc = "0.2"
+chrono = "0.4"
+users = "0.11"
