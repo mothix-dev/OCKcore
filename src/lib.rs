@@ -1,3 +1,5 @@
+use libc::ttyname;
+use std::ffi::CStr;
 /// This function assumes you removed the executable name from the arguments.
 #[must_use]
 pub fn get_opts(args: &[String], switches: &str) -> Option<(String,Vec<String>)> {
@@ -22,4 +24,17 @@ pub fn get_opts(args: &[String], switches: &str) -> Option<(String,Vec<String>)>
     } else {
         None
     }
+}
+
+/// # Errors
+/// Whatever errno might be.
+/// # Safety
+/// There is a chance `libc::__errno_location()` might be wrong. Plus, this does many unsafe things anyways.
+pub unsafe fn tty_name() -> Result<String, i32> {
+    let name_ptr = ttyname(libc::STDIN_FILENO);
+    if name_ptr.is_null() {
+        return Err(*(libc::__errno_location()))
+    }
+    let name = CStr::from_ptr(name_ptr).to_string_lossy().into_owned();
+    Ok(name)
 }

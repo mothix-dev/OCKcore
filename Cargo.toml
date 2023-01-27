@@ -53,6 +53,10 @@ path = "src/whoami.rs"
 name = "uname"
 path = "src/uname.rs"
 
+[[bin]]
+name = "tty"
+path = "src/tty.rs"
+
 [dependencies]
 libc = "0.2"
 chrono = "0.4"
