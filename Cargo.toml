@@ -1,0 +1,64 @@
+[package]
+name = "ockcore"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "cat"
+path = "src/cat.rs"
+
+[[bin]]
+name = "yes"
+path = "src/yes.rs"
+
+[[bin]]
+name = "echo"
+path = "src/echo.rs"
+
+[[bin]]
+name = "pwd"
+path = "src/pwd.rs"
+
+[[bin]]
+name = "head"
+path = "src/head.rs"
+
+[[bin]]
+name = "ls"
+path = "src/ls.rs"
+
+[[bin]]
+name = "true"
+path = "src/true.rs"
+
+[[bin]]
+name = "false"
+path = "src/false.rs"
+
+[[bin]]
+name = "sync"
+path = "src/sync.rs"
+
+[[bin]]
+name = "link"
+path = "src/link.rs"
+
+[[bin]]
+name = "whoami"
+path = "src/whoami.rs"
+
+[[bin]]
+name = "uname"
+path = "src/uname.rs"
+
+[[bin]]
+name = "tty"
+path = "src/tty.rs"
+
+[dependencies]
+libc = "0.2"
+chrono = "0.4"
+users = "0.11"
+uname = "0.1.1"
