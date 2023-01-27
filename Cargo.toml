@@ -45,8 +45,16 @@ path = "src/sync.rs"
 name = "link"
 path = "src/link.rs"
 
+[[bin]]
+name = "whoami"
+path = "src/whoami.rs"
+
+[[bin]]
+name = "uname"
+path = "src/uname.rs"
 
 [dependencies]
 libc = "0.2"
 chrono = "0.4"
 users = "0.11"
+uname = "0.1.1"

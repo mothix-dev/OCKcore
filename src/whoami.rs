@@ -1,8 +1,11 @@
+use std::process::exit;
 use users::get_current_username;
 
 fn main() {
-    match get_current_username() {
-        Some(uname) => println!("{}", uname),
-        None        => eprintln!("The current user does not exist!"),
+    if let Some(u) = get_current_username() {
+        println!("{}", u.to_str().unwrap());
+    } else {
+        eprintln!("The current user does not exist!");
+        exit(-1);
     }
 }
